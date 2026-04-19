@@ -218,7 +218,9 @@ python main.py
 
 ### Case 1
 Input: A person broke into a house at night and stole valuables.
+
 Expected: House-breaking by night, Theft
+
 output : {
   "crime_type": ["House-breaking", "Theft"],
   "applicable_laws": [
@@ -245,7 +247,9 @@ output : {
 
 ### Case 2
 Input: A man sent threatening messages online and leaked private photos of a woman without consent.
+
 Expected: Cyberstalking, Obscenity, IT Act violations
+
 Output : {
   "crime_type": ["Criminal Intimidation", "Harassment", "Violation of Privacy"],
   "applicable_laws": [
@@ -266,7 +270,9 @@ Output : {
 
 ### Case 3
 Input: A government official accepted a bribe to clear a building permit.
+
 Expected: Corruption, Bribery under Prevention of Corruption Act
+
 output : 
 {
   "crime_type": ["Corruption"],
@@ -283,7 +289,9 @@ output :
 
 ### Case 4
 Input: A person was caught carrying heroin at an airport.
+
 Expected: Possession of narcotic substance under NDPS Act
+
 output : {
   "crime_type": ["Narcotic drug possession", "Drug trafficking"],  
   "applicable_laws": [
@@ -310,7 +318,9 @@ output : {
 
 ### Case 5
 Input: A drunk driver ran a red light and injured a pedestrian.
+
 Expected: Rash driving, causing hurt by negligence under Motor Vehicles Act and IPC
+
 Output : {
   "crime_type": ["Drunk driving", "Reckless driving", "Causing injury by negligence"],
   "applicable_laws": [
