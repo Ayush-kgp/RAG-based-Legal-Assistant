@@ -2,6 +2,8 @@
 
 A Retrieval-Augmented Generation (RAG) system that accepts natural language descriptions of crime scenarios, identifies applicable crime types, and retrieves relevant legal provisions with justifications.
 
+Demo video link : https://drive.google.com/file/d/1POaD-oRRNbWd1Iws6gSaWoQWYwMGWyzr/view?usp=sharing
+
 ---
 
 ## Overview
@@ -217,36 +219,115 @@ python main.py
 ### Case 1
 Input: A person broke into a house at night and stole valuables.
 Expected: House-breaking by night, Theft
+output : {
+  "crime_type": ["House-breaking", "Theft"],
+  "applicable_laws": [
+    {
+      "act": "India_Penal_Code",
+      "section": "446",
+      "description": "House-breaking by night",
+      "justification": "The person broke into a house at night, which constitutes house-breaking by night."
+    },
+    {
+      "act": "India_Penal_Code",
+      "section": "457",
+      "description": "Lurking house-trespass or house-breaking by night in order to commit offence punishable with imprisonment",     
+      "justification": "The house-breaking was done at night with the intent to commit theft, an offence punishable with imprisonment."
+    },
+    {
+      "act": "India_Penal_Code",
+      "section": "445",
+      "description": "House-breaking",
+      "justification": "The person committed house-trespass by breaking into the house through unauthorized means."
+    }
+  ]
+}
 
 ### Case 2
 Input: A man sent threatening messages online and leaked private photos of a woman without consent.
 Expected: Cyberstalking, Obscenity, IT Act violations
+Output : {
+  "crime_type": ["Criminal Intimidation", "Harassment", "Violation of Privacy"],
+  "applicable_laws": [
+    {
+      "act": "India_Penal_Code",
+      "section": "509B",
+      "description": "Punishment for obscene or indecent communication intended to harass a woman",
+      "justification": "The man sent threatening messages online with intent to harass the woman."
+    },
+    {
+      "act": "bharatiya_nyaya_sanhita",
+      "section": "351",
+      "description": "Criminal intimidation by threatening injury to person or reputation",
+      "justification": "The man threatened the woman by sending threatening messages causing alarm."
+    }
+  ]
+}
 
 ### Case 3
 Input: A government official accepted a bribe to clear a building permit.
 Expected: Corruption, Bribery under Prevention of Corruption Act
+output : 
+{
+  "crime_type": ["Corruption"],
+  "applicable_laws": [
+    {
+      "act": "Prevention_of_Corruption_Act",
+      "section": "7",
+      "description": "Offence relating to public servant being bribed",
+      "justification": "The government official accepted a bribe to clear a building permit, which constitutes obtaining an undue advantage to perform a public duty improperly."
+    }
+  ]
+}
+
 
 ### Case 4
 Input: A person was caught carrying heroin at an airport.
 Expected: Possession of narcotic substance under NDPS Act
+output : {
+  "crime_type": ["Narcotic drug possession", "Drug trafficking"],  
+  "applicable_laws": [
+    {
+      "act": "Narcotic_Drugs_and_Psychotropic_Substances_Act_1985",
+      "section": "43",
+      "description": "Seizure and arrest of persons in possession of narcotic drugs",
+      "justification": "The person was caught carrying heroin at an airport, which is a public place, justifying seizure and arrest under this section."
+    },
+    {
+      "act": "Narcotic_Drugs_and_Psychotropic_Substances_Act_1985",
+      "section": "60",
+      "description": "Confiscation of narcotic drugs and conveyances used in the offence",
+      "justification": "Heroin carried by the person is liable to confiscation along with any conveyance used."
+    },
+    {
+      "act": "Narcotic_Drugs_and_Psychotropic_Substances_Act_1985",
+      "section": "31A",
+      "description": "Punishment for offences involving commercial quantity of narcotic drugs",
+      "justification": "If the quantity of heroin carried equals or exceeds 1 kg, enhanced punishment applies under this section."    
+    }
+  ]
+}
 
 ### Case 5
 Input: A drunk driver ran a red light and injured a pedestrian.
 Expected: Rash driving, causing hurt by negligence under Motor Vehicles Act and IPC
-
-### Case 6
-Input: A man repeatedly beat his wife and threatened to throw her out of the house.
-Expected: Domestic violence, Cruelty
-
-### Case 7
-Input: A group of individuals raised funds for a terrorist organization.
-Expected: Unlawful Activities under UAPA, Money Laundering under PMLA
-
-### Case 8
-Input: An adult man groomed and sexually assaulted a 14-year-old child.
-Expected: POCSO Act offences, IPC provisions on sexual assault
-
----
+Output : {
+  "crime_type": ["Drunk driving", "Reckless driving", "Causing injury by negligence"],
+  "applicable_laws": [
+    {
+      "act": "motor_vehicles_act_1988",
+      "section": "185",
+      "description": "Driving a motor vehicle under the influence of alcohol or drugs",
+      "justification": "The driver was drunk while driving."       
+    },
+    {
+      "act": "motor_vehicles_act_1988",
+      "section": "134",
+      "description": "Duty of driver to secure medical attention and report accident",
+      "justification": "The driver injured a pedestrian and must take reasonable steps to secure medical attention and report the accident."
+    }
+  ]
+}
 
 ## Built With
 
