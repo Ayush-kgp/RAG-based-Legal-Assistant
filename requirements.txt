@@ -1,0 +1,24 @@
+# LangChain core
+langchain
+langchain-core
+langchain-openai
+langchain-community
+langchain-text-splitters
+
+# Vector store
+faiss-cpu
+
+# OpenAI
+openai
+
+# PDF parsing
+unstructured[pdf]
+
+# Streamlit frontend
+streamlit
+
+# Environment variables
+python-dotenv
+
+# Data validation (used by chunker.py)
+pydantic
