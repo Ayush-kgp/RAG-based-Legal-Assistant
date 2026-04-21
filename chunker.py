@@ -101,7 +101,7 @@ TEXT:
         result = structured_llm.invoke(prompt)
         return result.sections
     except Exception as e:
-        print("⚠️ Extraction error:", e)
+        print("Extraction error:", e)
         return []
 
 # =========================
@@ -147,7 +147,7 @@ def merge_sections(all_sections, act_name):
 # =========================
 def process_pdf(pdf_path):
     act_name = Path(pdf_path).stem
-    print(f"\n📄 Processing: {act_name}")
+    print(f"\nProcessing: {act_name}")
 
     elements = pdf_to_elements(pdf_path)
     text = elements_to_text(elements)
@@ -159,7 +159,7 @@ def process_pdf(pdf_path):
 
     # Load checkpoint if exists
     if os.path.exists(temp_output_path):
-        print("🔁 Resuming from checkpoint...")
+        print("Resuming from checkpoint...")
         with open(temp_output_path, "r", encoding="utf-8") as f:
             all_sections = json.load(f)
     else:
@@ -180,7 +180,7 @@ def process_pdf(pdf_path):
         with open(temp_output_path, "w", encoding="utf-8") as f:
             json.dump(all_sections, f)
 
-    print("✅ All chunks processed")
+    print("All chunks processed")
 
     merged = merge_sections(all_sections, act_name)
 
@@ -191,7 +191,7 @@ def process_pdf(pdf_path):
     # remove temp file after success
     os.remove(temp_output_path)
 
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     print(f"Sections extracted: {len(merged)}")
 
 # =========================
@@ -199,7 +199,7 @@ def process_pdf(pdf_path):
 # =========================
 def process_all_pdfs():
     files = sorted(f for f in os.listdir(PDF_FOLDER) if f.endswith(".pdf"))
-    print(f"📂 Found {len(files)} PDFs")
+    print(f"Found {len(files)} PDFs")
 
     for f in files:
         process_pdf(os.path.join(PDF_FOLDER, f))
